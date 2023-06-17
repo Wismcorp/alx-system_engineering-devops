@@ -1,9 +1,8 @@
-#!/usr/bin/env puppet
-# Using Puppet to create a manifest that kills a process named killmenow.
+#!/usr/bin/pup
 
-exec { 'kill':
-  command   => 'pkill -f killmenow',
-  path      => ['/usr/bin', '/usr/sbin'],
-  returns   => ['0', '1'],
-  logoutput => true,
+# a script that kills a process named killmenow
+
+exec { 'pkill':
+  provider => 'shell',
+  command  => 'pkill -f killmenow',
 }
